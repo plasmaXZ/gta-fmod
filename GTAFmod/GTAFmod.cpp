@@ -193,9 +193,7 @@ public:
             float velocity = fabs(params->m_fVelocity);
             params->m_nCurrentGear = lastVehicle->m_nCurrentGear;
             params->m_bHandbrakeOn = lastVehicle->m_nVehicleFlags.bIsHandbrakeOn;
-            float currentRatio = (velocity - m_pTransmission->m_aGears[nGear].m_fChangeDownVelocity)
-                / (*(float*)&m_pTransmission->m_aGears[nGear].m_fMaxVelocity
-                    - m_pTransmission->m_aGears[nGear].m_fChangeDownVelocity);
+            float currentRatio = velocity / m_pTransmission->m_aGears[nGear].m_fMaxVelocity;
             
             params->m_fVelocityChangingPercentage = currentRatio;
 
