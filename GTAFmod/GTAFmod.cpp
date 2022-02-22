@@ -201,7 +201,8 @@ public:
                 params->m_fVelocityChangingPercentage = 0.0;
            
             //Calculate target RPM 
-            float targetRpm = currentAudio->m_Ini->m_fMinRPM + ((currentAudio->m_Ini->m_fMaxRPM - 2000 )* params->m_fVelocityChangingPercentage);
+            float targetRpm = currentAudio->m_Ini->m_fMaxRPM * params->m_fVelocityChangingPercentage;
+            targetRpm = max(currentAudio->m_Ini->m_fMinRPM, targetRpm);
 
             //Set 3D space position
             CVector camPos = TheCamera.GetPosition();
